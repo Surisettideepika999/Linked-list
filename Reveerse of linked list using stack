@@ -1,0 +1,73 @@
+package mccp;
+
+import java.util.Scanner;
+import java.util.Stack;
+
+
+public class C1 {
+	public static class Node{
+		int data;
+		Node next;
+		Node(int data){
+			this.data=data;
+			next=null;
+		}
+	}
+	public static Node head=null;
+	private Node insert(int ele,Node head) {
+		// TODO Auto-generated method stub
+		Node temp=new Node(ele);
+		Node p=head;
+		if(head==null)
+			head=temp;
+		else {
+		while(p.next!=null) {
+			p=p.next;
+		}
+		p.next=temp;
+		}
+		return head;
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		C1 l=new C1();
+		System.out.println("enter m");
+		int m=sc.nextInt();
+		System.out.println("enter elements");
+		for(int i=0;i<m;i++) 
+			head=l.insert(sc.nextInt(),head);
+		reverse(head);
+	}
+	private static void reverse(Node head) {
+		// TODO Auto-generated method stub
+		Node temp=head;
+		Stack<Integer>s=new Stack<>();
+		while(temp!=null) {
+			s.push(temp.data);
+			temp=temp.next;
+		}
+		Node p=null;Node last=null;
+		while(!s.isEmpty()) {
+			Node t=new Node(s.pop());
+			if(p==null) {
+				p=t;
+				last=t;
+			}
+			else {
+				last.next=t;
+				last=t;
+			}
+		}
+		display(p);
+	}
+	private static void display(Node head) {
+		// TODO Auto-generated method stub
+		Node temp=head;
+		while(temp!=null) {
+			System.out.print(temp.data+" ");
+			temp=temp.next;
+		}
+		System.out.println();
+	}
+}
