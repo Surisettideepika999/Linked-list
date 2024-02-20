@@ -1,0 +1,78 @@
+package mccp;
+
+import java.util.Scanner;
+
+import mccp.LinkedList.Node;
+
+public class C1 {
+	public class Node{
+		int data;
+		Node next;
+		Node(int data){
+			this.data=data;
+			next=null;
+		}
+	}
+	public static Node head=null;
+	private Node insert(int ele,Node head) {
+		// TODO Auto-generated method stub
+		Node temp=new Node(ele);
+		Node p=head;
+		if(head==null)
+			head=temp;
+		else {
+		while(p.next!=null) {
+			p=p.next;
+		}
+		p.next=temp;
+		}
+		return head;
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		C1 l=new C1();
+		System.out.println("enter m");
+		int m=sc.nextInt();
+		System.out.println("enter n");
+		int n=sc.nextInt();
+		System.out.println("enter elements");
+		for(int i=0;i<m;i++) 
+			head=l.insert(sc.nextInt(),head);
+		nthnode(head,n);
+	}
+	private static void nthnode(Node head,int c) {
+		// TODO Auto-generated method stub
+		Node head2=head;
+		int n=0;
+		while(head2!=null) {
+			head2=head2.next;
+			n++;
+		}
+		if(n-c+1<=0)
+			System.out.print("no nth element");
+		else if(n==c){
+			head2=head;
+			head2=head2.next;
+			head=head2;
+			display(head);
+		}
+		else{
+			head2=head;
+		for(int i=1;i<n-c;i++) {
+			head2=head2.next;
+		}
+		head2.next=head2.next.next;
+		display(head);
+		}
+	}
+	private static void display(Node head) {
+		// TODO Auto-generated method stub
+		Node temp=head;
+		while(temp!=null) {
+			System.out.print(temp.data+" ");
+			temp=temp.next;
+		}
+		System.out.println();
+	}
+}
