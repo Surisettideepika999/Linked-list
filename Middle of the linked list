@@ -51,13 +51,4 @@ public class C1 {
 		}
 		System.out.println(head.data);
 	}
-//	private static void display(Node head) {
-//		// TODO Auto-generated method stub
-//		Node temp=head;
-//		while(temp!=null) {
-//			System.out.print(temp.data+" ");
-//			temp=temp.next;
-//		}
-//		System.out.println();
-//	}
 }
